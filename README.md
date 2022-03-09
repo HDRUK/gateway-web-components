@@ -9,7 +9,10 @@ ex:
 #### Data Utility Banner
 
 ```html
-<script type="module" src="dataUtilityBanner/data-utility-banner.js"></script>
+<script
+  type="module"
+  src="https://unpkg.com/hdruk-data-utility-banner?module"
+></script>
 <data-utility-banner
   title="Data Utility Wizard tool"
   bannerText="Help refine your search to only datasets that meet your data utility requirements"
