@@ -56,7 +56,6 @@ class DataUtilityBanner extends observeState(LitElement) {
       }
       .content {
         left: 0px;
-        height: 65px;
         top: 0px;
         background: #29235c;
       }
@@ -78,7 +77,6 @@ class DataUtilityBanner extends observeState(LitElement) {
       }
 
       .banner-text {
-        height: 24px;
         top: 20px;
         font-style: normal;
         font-weight: normal;
@@ -143,6 +141,7 @@ class DataUtilityBanner extends observeState(LitElement) {
   }
   constructor() {
     super();
+    this.floatRight = screen.width < 768 ? "" : "float-right";
     this.show = true;
   }
 
@@ -178,12 +177,14 @@ class DataUtilityBanner extends observeState(LitElement) {
             crossorigin="anonymous"
           />
           <div class="row content">
-            <div class="col-2 banner-title"><span>New!</span>${this.title}</div>
-            <div class="col-5 banner-text">
+            <div class="col-xs-12 col-sm-12 col-md-2 banner-title">
+              <span>New!</span>${this.title}
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-5 banner-text">
               <div class="float-left">${this.bannerText}</div>
             </div>
-            <div class="col-5">
-              <div class="float-right">
+            <div class="col-xs-12 col-sm-12 col-md-5">
+              <div class="${this.floatRight}">
                 <div class="btn-toolbar">
                   <button
                     type="button"
