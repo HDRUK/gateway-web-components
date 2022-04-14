@@ -177,19 +177,20 @@ class DataUtilityBanner extends observeState(LitElement) {
             crossorigin="anonymous"
           />
           <div class="row content">
-            <div class="col-xs-12 col-sm-12 col-md-2 banner-title">
+            <div class="col-xs-12 col-sm-12 col-md-3 banner-title">
               <span>New!</span>${this.title}
             </div>
             <div class="col-xs-12 col-sm-12 col-md-5 banner-text">
               <div class="float-left">${this.bannerText}</div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-5">
+            <div class="col-xs-12 col-sm-12 col-md-4">
               <div class="${this.floatRight}">
                 <div class="btn-toolbar">
                   <button
                     type="button"
                     class="banner-button"
                     @click="${this.handleOnclick}"
+                    title="Data Utility Wizard Tool"
                   >
                     <span>Launch Data Utility Wizard</span>
                   </button>
