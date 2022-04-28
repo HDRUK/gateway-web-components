@@ -134,7 +134,7 @@ class DataUtilityBanner extends observeState(LitElement) {
   }
   static get properties() {
     return {
-      title: { type: String },
+      bannerTitle: { type: String },
       bannerText: { type: String },
       webURL: { type: String },
     };
@@ -178,7 +178,7 @@ class DataUtilityBanner extends observeState(LitElement) {
           />
           <div class="row content">
             <div class="col-xs-12 col-sm-12 col-md-3 banner-title">
-              <span>New!</span>${this.title}
+              <span>New!</span>${this.bannerTitle}
             </div>
             <div class="col-xs-12 col-sm-12 col-md-5 banner-text">
               <div class="float-left">${this.bannerText}</div>
