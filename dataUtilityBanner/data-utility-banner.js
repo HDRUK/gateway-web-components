@@ -136,7 +136,8 @@ class DataUtilityBanner extends observeState(LitElement) {
     return {
       bannerTitle: { type: String },
       bannerText: { type: String },
-      webURL: { type: String },
+      bannerLinkText: { type: String },
+      bannerExternalLink: { type: String },
     };
   }
   constructor() {
@@ -159,7 +160,7 @@ class DataUtilityBanner extends observeState(LitElement) {
     document.head.appendChild(style);
   }
   handleOnclick() {
-    window.location.href = this.webURL;
+    window.location.href = this.bannerExternalLink;
   }
 
   handleOnClose() {
@@ -178,7 +179,7 @@ class DataUtilityBanner extends observeState(LitElement) {
           />
           <div class="row content">
             <div class="col-xs-12 col-sm-12 col-md-3 banner-title">
-              <span>New!</span>${this.bannerTitle}
+              <span>${this.bannerTitle} </span>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-5 banner-text">
               <div class="float-left">${this.bannerText}</div>
@@ -190,9 +191,9 @@ class DataUtilityBanner extends observeState(LitElement) {
                     type="button"
                     class="banner-button"
                     @click="${this.handleOnclick}"
-                    title="Data Utility Wizard Tool"
+                    title="${this.bannerLinkText}"
                   >
-                    <span>Launch Data Utility Wizard</span>
+                    <span>${this.bannerLinkText}</span>
                   </button>
 
                   <span class="close-icon" @click="${this.handleOnClose}"
