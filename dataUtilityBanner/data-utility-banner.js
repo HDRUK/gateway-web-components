@@ -1,12 +1,12 @@
 import {
-  html,
-  css,
-  LitElement,
+	html,
+	css,
+	LitElement,
 } from "https://unpkg.com/lit-element/lit-element.js?module";
 import { unsafeHTML } from "https://unpkg.com/lit-html/directives/unsafe-html.js?module";
 import {
-  LitState,
-  observeState,
+	LitState,
+	observeState,
 } from "https://unpkg.com/lit-element-state@1.7.0/lit-state.js";
 
 const CLOSE_SVG = `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 409.806 409.806" style="enable-background:new 0 0 409.806 409.806" xml:space="preserve"><g>
@@ -40,172 +40,171 @@ const FONT_FACES = `@font-face {
   }`;
 
 class LocalState extends LitState {
-  static get stateVars() {
-    return {
-      show: true,
-    };
-  }
+	static get stateVars() {
+		return {
+			show: true,
+		};
+	}
 }
 const localState = new LocalState();
 
 class DataUtilityBanner extends observeState(LitElement) {
-  static get styles() {
-    return css`
-      * {
-        font-family: "museo-sans-rounded";
-      }
-      .content {
-        left: 0px;
-        top: 0px;
-        background: #29235c;
-      }
-      .banner-title {
-        height: 23px;
-        left: 36px;
-        top: 20px;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 20px;
-        line-height: 23px;
-        color: #ffffff;
-        font-weight: 300;
-      }
-      .banner-title span {
-        color: #ffc40c;
-        margin-right: 5px;
-        font-weight: bold;
-      }
+	static get styles() {
+		return css`
+			* {
+				font-family: "museo-sans-rounded";
+			}
+			.banner {
+				left: 0px;
+				top: 0px;
+				background: #29235c;
+				padding: 15px 30px;
+				display: flex;
+				flex-direction: column;
+				position: relative;
+			}
 
-      .banner-text {
-        top: 20px;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 15px;
-        line-height: 24px;
-        color: #ffffff;
-        font-weight: 300;
-      }
+			.banner__title {
+				font-style: normal;
+				font-size: 20px;
+				line-height: 23px;
+				color: #ffc40c;
+				font-weight: bold;
+			}
 
-      .banner-button {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 10px 16px;
-        height: 34px;
-        left: 0px;
-        top: 0px;
-        background: #eeeeee;
-        border-radius: 4px;
-        flex: none;
-        order: 0;
-        flex-grow: 0;
-        margin: 15px 42px;
-        cursor: pointer;
-      }
+			.banner__title-container {
+				margin-top: 5px;
+				margin-bottom: 5px;
+			}
 
-      .banner-button span {
-        height: 17px;
-        left: 16px;
-        top: 8.5px;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 17px;
-        color: #29235c;
-        flex: none;
-        order: 1;
-        flex-grow: 0;
-        margin: 0px 0px;
-      }
+			.banner__text-container {
+				flex: 1;
+				margin-bottom: 10px;
+			}
 
-      .banner-close {
-        color: #ffffff;
-      }
-      svg {
-        height: 14.828426361083984px;
-        width: 14.828426361083984px;
-      }
-      .close-icon {
-        margin-top: 22px;
-        margin-right: 20px;
-        cursor: pointer;
-      }
-    `;
-  }
-  static get properties() {
-    return {
-      bannerTitle: { type: String },
-      bannerText: { type: String },
-      bannerLinkText: { type: String },
-      bannerExternalLink: { type: String },
-    };
-  }
-  constructor() {
-    super();
-    this.floatRight = screen.width < 768 ? "" : "float-right";
-    this.show = true;
-  }
+			.banner__text {
+				font-style: normal;
+				font-weight: normal;
+				font-size: 15px;
+				line-height: 24px;
+				color: #ffffff;
+				font-weight: 300;
+			}
 
-  async connectedCallback() {
-    super.connectedCallback();
-  }
+			.banner__button {
+				padding: 10px 16px;
+				height: 34px;
+				background: #eeeeee;
+				border-radius: 4px;
+				cursor: pointer;
+				border: none;
+				font-style: normal;
+				font-weight: normal;
+				font-size: 14px;
+				line-height: 17px;
+				color: #29235c;
+			}
 
-  setupFontFaces() {
-    if (document.querySelector('style[data-description="hdruk-font-faces"]')) {
-      return;
-    }
-    const style = document.createElement("style");
-    style.dataset.description = "hdruk-font-faces";
-    style.appendChild(document.createTextNode(FONT_FACES));
-    document.head.appendChild(style);
-  }
-  handleOnclick() {
-    window.location.href = this.bannerExternalLink;
-  }
+			.banner__button:hover {
+				background: #d0d3d4;
+			}
 
-  handleOnClose() {
-    localState.show = false;
-  }
+			svg {
+				height: 14.828426361083984px;
+				width: 14.828426361083984px;
+			}
 
-  render() {
-    this.setupFontFaces();
-    return localState.show
-      ? html`
-          <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-            crossorigin="anonymous"
-          />
-          <div class="row content">
-            <div class="col-xs-12 col-sm-12 col-md-3 banner-title">
-              <span>${this.bannerTitle} </span>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-5 banner-text">
-              <div class="float-left">${this.bannerText}</div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4">
-              <div class="${this.floatRight}">
-                <div class="btn-toolbar">
-                  <button
-                    type="button"
-                    class="banner-button"
-                    @click="${this.handleOnclick}"
-                    title="${this.bannerLinkText}"
-                  >
-                    <span>${this.bannerLinkText}</span>
-                  </button>
+			.banner__close-icon {
+				cursor: pointer;
+				padding: 20px;
+				position: absolute;
+				right: 0px;
+				top: 4px;
+			}
 
-                  <span class="close-icon" @click="${this.handleOnClose}"
-                    >${unsafeHTML(CLOSE_SVG)}</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        `
-      : "";
-  }
+			@media screen and (min-width: 768px) {
+				.banner {
+					flex-direction: row;
+				}
+				.banner__title-container {
+					margin-right: 30px;
+					margin-bottom: 0;
+				}
+				.banner__text-container {
+					margin-right: 15px;
+					margin-top: 5px;
+					margin-bottom: 0;
+				}
+				.banner__button {
+					margin-right: 30px;
+				}
+			}
+		`;
+	}
+	static get properties() {
+		return {
+			bannerTitle: { type: String },
+			bannerText: { type: String },
+			bannerLinkText: { type: String },
+			bannerExternalLink: { type: String },
+		};
+	}
+	constructor() {
+		super();
+		this.floatRight = screen.width < 768 ? "" : "float-right";
+		this.show = true;
+	}
+
+	async connectedCallback() {
+		super.connectedCallback();
+	}
+
+	setupFontFaces() {
+		if (document.querySelector('style[data-description="hdruk-font-faces"]')) {
+			return;
+		}
+		const style = document.createElement("style");
+		style.dataset.description = "hdruk-font-faces";
+		style.appendChild(document.createTextNode(FONT_FACES));
+		document.head.appendChild(style);
+	}
+	handleOnclick() {
+		window.location.href = this.bannerExternalLink;
+	}
+
+	handleOnClose() {
+		localState.show = false;
+	}
+
+	render() {
+		this.setupFontFaces();
+		return localState.show
+			? html`
+					<div class="banner">
+						<div class="banner__title-container">
+							<span class="banner__title">${this.bannerTitle} </span>
+						</div>
+						<div class="banner__text-container">
+							<span class="banner__text">${this.bannerText}</span>
+						</div>
+						<div>
+							<button
+								type="button"
+								class="banner__button"
+								@click="${this.handleOnclick}"
+								title="${this.bannerLinkText}"
+							>
+								${this.bannerLinkText}
+							</button>
+
+							<span class="banner__close-icon" @click="${this.handleOnClose}"
+								>${unsafeHTML(CLOSE_SVG)}</span
+							>
+						</div>
+					</div>
+			  `
+			: "";
+	}
 }
 
 customElements.define("data-utility-banner", DataUtilityBanner);
