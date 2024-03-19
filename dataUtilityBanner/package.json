@@ -1,27 +1,27 @@
 {
-  "author": "Jag Kandasamy",
-  "name": "hdruk-data-utility-banner",
-  "version": "0.0.5",
-  "type": "module",
-  "description": "A Web Component for embedding Data Utility Banner",
-  "main": "data-utility-banner.js",
-  "module": "data-utility-banner.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
-  },
-  "devDependencies": {
-    "vite": "^2.6.4"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HDRUK/gateway-web-components"
-  },
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/HDRUK/gateway-web-components/issues"
-  },
-  "homepage": "https://github.com/HDRUK/gateway-web-components#readme"
+	"author": "Jag Kandasamy",
+	"name": "hdruk-data-utility-banner",
+	"version": "0.0.6",
+	"type": "module",
+	"description": "A Web Component for embedding Data Utility Banner",
+	"main": "data-utility-banner.js",
+	"module": "data-utility-banner.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "vite",
+		"build": "vite build",
+		"serve": "vite preview"
+	},
+	"devDependencies": {
+		"vite": "^2.6.4"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/HDRUK/gateway-web-components"
+	},
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/HDRUK/gateway-web-components/issues"
+	},
+	"homepage": "https://github.com/HDRUK/gateway-web-components#readme"
 }
