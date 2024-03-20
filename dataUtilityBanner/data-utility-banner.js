@@ -3,7 +3,7 @@ import {
 	css,
 	LitElement,
 } from "https://unpkg.com/lit-element@3.3.3/lit-element.js?module";
-import { unsafeHTML } from "https://unpkg.com/lit-html/directives/unsafe-html.js?module";
+import { unsafeHTML } from "https://unpkg.com/lit-html@2.8.0/directives/unsafe-html.js?module";
 import {
 	LitState,
 	observeState,
